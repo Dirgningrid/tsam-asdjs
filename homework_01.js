@@ -6,8 +6,8 @@ negativo.
 
 function sumwhileneg(myArray) {
     var tot = 0;
-    for (i = 0; i < myarray.length; ++i){
-        var x = myarray[1];
+    for (i = 0; i < myArray.length; ++i){
+        var x = myArray[1];
         if(x < 0) {
             return tot;
         }
@@ -77,7 +77,7 @@ Dato un array di 10 elementi, calcolarne la media
 function average(array) {
     tot = 0;
     for(i = 0; i < 10; i++) {
-        tot = tot + i;
+        tot = tot + array[i];
     }
     avg = tot / 10;
     return avg;
@@ -99,8 +99,12 @@ function averageR(array) {
     }
 }
 
+function averageRW(array) {
+    return averageR(array) / array.length;
+}
+
 function ex_3_R(x){
-    return averageR(x);
+    return averageRW(x);
 }
 
 /*
