@@ -17,7 +17,7 @@ function sumwhileneg(myArray) {
 }
 
 function ex_1_I(x){
-    return sumwhileneg(myArray);
+    return sumwhileneg(x);
 }
 
 /*
@@ -33,7 +33,7 @@ function sumWhileNegR(array) {
 }
 
 function ex_1_R(x){
-    return sumWhileNegR(array);
+    return sumWhileNegR(x);
 }
 
 /*
@@ -50,7 +50,7 @@ function sumOdd(n) {
 }
 
 function ex_2_I(x){
-    return sumOdd(n);
+    return sumOdd(x);
 }
 
 /*
@@ -66,7 +66,7 @@ function sumOddR(n){
 }
 
 function ex_2_R(x){
-    return sumOddR(n);
+    return sumOddR(x);
 }
 
 /*
@@ -84,7 +84,7 @@ function average(array) {
 }
 
 function ex_3_I(x){
-    return average(array);
+    return average(x);
 }
 
 /*
@@ -100,7 +100,7 @@ function averageR(array) {
 }
 
 function ex_3_R(x){
-    return averageR(array);
+    return averageR(x);
 }
 
 /*
@@ -130,7 +130,7 @@ function sumIntervalW(a,b) {
 }
 
 function ex_4_I(x, y){
-    return sumIntervalW(a, b);
+    return sumIntervalW(x, y);
 }
 
 /*
@@ -154,7 +154,7 @@ function sumIntervaRW(a, b){
 }
 
 function ex_4_R(x, y){
-    return sumIntervaRW(a, b);
+    return sumIntervaRW(x, y);
 }
 
 /*
@@ -174,7 +174,7 @@ function mult(a, b){
 }
 
 function ex_5_I(x, y){
-    return mult(a, b);
+    return mult(x, y);
 }
 
 /*
@@ -190,7 +190,7 @@ function multR(a, b){
 }
 
 function ex_5_R(x, y){
-    return multR(a, b);
+    return multR(x, y);
 }
 
 /*
@@ -212,7 +212,7 @@ function div(a, b) {
 }
 
 function ex_6_I(x, y){
-    return div(a, b);
+    return div(x, y);
 }
 
 /*
@@ -233,5 +233,19 @@ function divR(a, b, q){
 }
 
 function ex_6_R(x, y){
-    return divRic(a,b);
+    return divRic(x, y);
+}
+
+/*Esercizio 7
+Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l’utilizzo dei soli 
+operatori somma, sottrazione e della funzione mult. Esempio: 
+pow(2, 3) => 8 
+*/
+
+function pow(a, b){
+    var count = 0;
+    for(i = 0; i < b; i++){
+        count += mult(i * a, a);
+    }
+    return count;
 }
