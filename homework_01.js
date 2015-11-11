@@ -74,37 +74,32 @@ Esercizio 3
 Dato un array di 10 elementi, calcolarne la media
 */
 
-function average(array) {
-    tot = 0;
-    for(i = 0; i < 10; i++) {
-        tot = tot + array[i];
+function avgAll(myarray) {
+    var tot = 0;
+    for(var i = 0; i < myarray.length; i++) {
+        tot += myarray[i];
     }
-    avg = tot / 10;
-    return avg;
+    return tot / myarray.length;
 }
 
-function ex_3_I(x){
-    return average(x);
-}
-
-/*
-ricorsiva
-*/
-
-function averageR(array) {
-    if(array.length == 0) {
+function avgAllRW(myarray) {
+    if (myarray.length == 0) {
         return 0;
     } else {
-        return array[0] + averageR(array.slice(1));
+        myarray[0] + avgAllRW(myarray.slice(1));
     }
 }
 
-function averageRW(array) {
-    return averageR(array) / array.length;
+function avgAllR(myarray) {
+    return avgAllRW(myarray) / myarray.length;
 }
 
-function ex_3_R(x){
-    return averageRW(x);
+function ex_3_I(x) {
+    return avgAll(x);
+}
+
+function ex_3_R(x) {
+    return avgAllR(x);
 }
 
 /*
