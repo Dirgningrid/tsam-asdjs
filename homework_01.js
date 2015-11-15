@@ -6,14 +6,14 @@ negativo.
 
 function sumwhileneg(myArray) {
     var tot = 0;
-    for (i = 0; i < myArray.length; ++i){
-        var x = myArray[1];
+    for (i = 0; i < myArray.length; i++){
+        var x = myArray[i];
         if(x < 0) {
             return tot;
         }
         tot += x;
     }
-        
+    return tot;
 }
 
 function ex_1_I(x){
@@ -86,7 +86,7 @@ function avgAllRW(myarray) {
     if (myarray.length == 0) {
         return 0;
     } else {
-        myarray[0] + avgAllRW(myarray.slice(1));
+        return myarray[0] + avgAllRW(myarray.slice(1));
     }
 }
 
@@ -202,7 +202,7 @@ div(5, 3) => 1 resto 2
 
 function div(a, b) {
     q = 0;  
-    for(i = 0; a>b; i++) {
+    for(i = 0; a > b; i++) {
         a = a - b;
         q++;
     }
@@ -242,9 +242,92 @@ pow(2, 3) => 8
 */
 
 function pow(a, b){
-    var count = 0;
-    for(i = 0; i < b; i++){
-        count += mult(i * a, a);
+    var acc = 1;
+    for(var i = 0; i < b; i++){
+    acc = mult(a, acc);
     }
-    return count;
+    return acc;
 }
+
+function ex_7_I(x, y) {
+    return pow(x, y);
+}
+
+/*
+ricorsiva
+*/
+
+function powR(a, b) {
+    if(b == 0) {
+        return 1;
+    } else {
+        return mult(a, powR(a, b -1));        
+    }
+}
+
+function ex_7_R(x, y){
+    return powR(x, y);
+}
+/*Esercizio 8
+
+Dato un array contenente n^2 elementi, scrivere un algoritmo che permetta di inserire tutti gli
+oggetti in un array bidimensionale n x n.
+*/
+
+function bidimensionale(array) {
+    var n = Math.sqrt(array.length);
+    var resarray= [];
+    var row = [];
+    for(var i = 0; i < array.length; ++i) {
+        row(row.length) = array[i];
+        if(row.length == n) {
+            resarray.push(row);
+            row = [];
+        }
+    }
+    return resarray;
+}
+
+/*
+ricorsiva
+*/
+
+function bidimensionaleR(array) {
+    function magic(myarray, matrix) {
+        matrix.unshift(myarray);
+        return matrix;
+    }
+    function bidimensionaleRInternal(array, n){
+       if(array.length == n) {
+            return [array];
+        } else {
+            return magic(array.slice(0, n), 
+                         bidimensionaleRInternal(array.slice(n), n));
+        } 
+    }
+    return bidimensionaleRInternal(array, Math.sqrt(array.length));
+    
+}
+
+/*Esercizio 10
+
+Dati due interi a, n maggiori di 0, scrivere un algoritmo che crea un lista di n elementi
+contenenti a.
+Esempio:
+replicate(3, 4) => A= {3, 3, 3, 3}
+
+*/
+
+function replicate(a, n) {
+    var array = [];
+    for(var i = 0; i < n; ++i) {
+        array[i] = a;
+    }
+    return array;
+}
+
+function ex_10_I(x, y) {
+    return replicate(x, y);
+}
+
+
