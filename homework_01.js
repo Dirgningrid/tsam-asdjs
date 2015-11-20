@@ -330,4 +330,28 @@ function ex_10_I(x, y) {
     return replicate(x, y);
 }
 
+/*
+Esercizio 11 
+Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi 
+dispari precedano nello stesso ordine tutti gli elementi pari. 
+Esempio 
+Input: A = {2, 5, 1, 8} 
+Output: A = {5, 1, 2, 8} 
+*/
+
+function list(x) {
+    var myArray = [];
+    for(var i = 0; i < x.length; i++){
+        if(i % 2 != 0){
+            myArray.push(i);
+        }     
+    }
+    for(var i = 0; i < x.length; i++){
+        if(i % 2 == 0){
+            myArray.push(i);
+        }
+    }
+    return myArray;        
+}
+
 

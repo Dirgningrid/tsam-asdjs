@@ -22,13 +22,24 @@ function sumUntilNegF(array) {
         if(x > 0) {
             tot += x;
         }
-        return x > 0;
+        return x > 0;        
        });
        return tot;
 }
 
+function sumUntilNeg4(myArray) {
+    var tot = 0;
+    myArray.every(function(x) {
+        if(x >0){
+            tot += x;
+        }
+        return x > 0;
+    });
+    return tot;
+}
+
 function ex_1_F(x) {
-    return sumUntilNegF(x);
+    return sumUntilNeg4(x);
 }
 
 function sumUntilNegF2(array) {
@@ -75,8 +86,13 @@ function sumOdd(n) {
     range(n).map(x => 2 * x + 1).reduce((acc, x) => acc + x);
 }
 
+function sumOddF(n) {
+    var oddF = range(n).map(function(x){return 2 * x + 1;}).reduce(function(acc,x) {return acc + x;}, 0);
+    return oddF;
+}
+
 function ex_2_F(x) {
-    return sumOdd(x);
+    return sumOddF(x);
 }
 
 function replicate(a, n) {
@@ -87,11 +103,25 @@ function replicate(a, n) {
     return array;
 }
 /*
+Esercizio 3 
+Dato un array di 10 elementi, calcolarne la media
+*/
+
+function avgF(myArray) {
+    var sum = myArray.reduce(function(acc, x){return acc + x}, 0);
+    var avg = sum / myArray.length;
+    return avg;
+}
+
+function ex_3_F(x){
+    return avgF(x);
+}
+
+/*
 Esercizio 4
 Dato un intervallo [a, b] con a e b due interi positivi, restituire la somma di tutti i numeri
 compresi all’interno dell’intervallo, estremi inclusi. Nel caso che b fosse minore di a,
 calcolare la somma nell’intervallo [b,a]
-
 Esempio:
 sumInterval(3, 5) => 12
 sumInterval(5, 3) => 12
@@ -107,7 +137,7 @@ Esempio:
 mult(2, 3) => 6
 */
 
-function multR(a, b){
+function multF(a, b){
     var count = 0;
     for(i = 1; i <= b; i++){
         count += a;
@@ -119,8 +149,12 @@ function mult(a, b){
     return replicate(a, b).reduce((x, y) => x + y);
 }
 
+function multF1(a, b){
+    return replicate(a,b).reduce(function(x,y){return x + y});
+}
+
 function ex_5_F(h, k){
-    return mult(h, k);
+    return multF1(h, k);
 }
 
 /*
@@ -139,7 +173,26 @@ function powF(x, y) {
     return replicate(x, y).reduce((h,k) => mult(h, k));
 }
 
-function ex_7_F(x,y){
-    return powF(x,y);
+function powF1(x, y) {
+    if(x == 0) {return 0};
+    if(y == 0) {return 0};
+    return replicate(x, y).reduce(function(h, k) {return mult(h, k)});
 }
 
+function ex_7_F(x,y){
+    return powF1(x,y);
+}
+
+/*
+Esercizio 11 
+Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi 
+dispari precedano nello stesso ordine tutti gli elementi pari. 
+Esempio 
+Input: A = {2, 5, 1, 8} 
+Output: A = {5, 1, 2, 8} 
+*/
+
+function list(myA){
+    var g = myA.map(function(x){x % 2 == 0});
+    return g;
+}
