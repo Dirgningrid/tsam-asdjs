@@ -127,6 +127,24 @@ sumInterval(3, 5) => 12
 sumInterval(5, 3) => 12
 */
 
+function sumInt(a, b){
+    var arrayInt = [];
+    if(b > a){
+        for(var i = a; i <= b; i++){
+            arrayInt.push(i);
+        }
+    } else {
+        for(var i = b; i <= a; i++){
+            arrayInt.push(i);
+        }
+    }    
+    return arrayInt.reduce(function(acc, x){return acc + x}, 0);   
+}
+
+function ex_4_F(h, k){
+    return sumInt(h, k);
+}
+
 
 /*
 Esercizio 5
@@ -193,6 +211,15 @@ Output: A = {5, 1, 2, 8}
 */
 
 function list(myA){
-    var g = myA.map(function(x){x % 2 == 0});
-    return g;
+    var odd = myA.filter(function(x) {
+        return x % 2 != 0;
+    });
+    var even = myA.filter(function(x){
+        return x % 2 == 0;
+    })
+    return odd.concat(even);
+}
+
+function ex_11_F(x){
+    return list(x);
 }

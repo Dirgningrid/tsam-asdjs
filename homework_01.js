@@ -308,6 +308,32 @@ function bidimensionaleR(array) {
     return bidimensionaleRInternal(array, Math.sqrt(array.length));
     
 }
+/*Esercizio 9
+
+Esercizio 9 
+Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l’ordine degli 
+elementi. 
+Esempio: 
+Input: A = {2, 5, 8} 
+Output A= {8, 5, 2} 
+*/
+function reverse(myA) {
+    var rev = [];
+    var c = 0;
+    for(var i = myA.length - 1; i >= 0; i--){
+        rev[c] = myA[i];
+        c++;
+    }
+    return rev;
+}
+
+function ex_9_I(x) {
+    return reverse(x);
+}
+
+/*ricorsiva*/
+
+
 
 /*Esercizio 10
 
@@ -329,6 +355,16 @@ function replicate(a, n) {
 function ex_10_I(x, y) {
     return replicate(x, y);
 }
+/* ricorsiva */
+
+function replicateR(a, n){
+    var myA = [];
+    myA.push(a);
+    if(n == 0) {
+        return myA;
+    } 
+    return replicateR(a, n - 1);
+}
 
 /*
 Esercizio 11 
@@ -342,13 +378,13 @@ Output: A = {5, 1, 2, 8}
 function list(x) {
     var myArray = [];
     for(var i = 0; i < x.length; i++){
-        if(i % 2 != 0){
-            myArray.push(i);
-        }     
-    }
-    for(var i = 0; i < x.length; i++){
-        if(i % 2 == 0){
-            myArray.push(i);
+        if(x % 2 != 0){
+            myArray[i] = x;
+        } 
+        for(var j = 0; j < x.length; j++){
+            if(x % 2 == 0){
+                myArray[j] = x;
+            }
         }
     }
     return myArray;        
