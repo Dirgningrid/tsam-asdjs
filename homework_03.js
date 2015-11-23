@@ -15,7 +15,7 @@ function sumUntilNegF(array) {
        return tot;
 }
 
-SumUntilNegF.prototype = function() {
+Array.prototype.sumUntilNegF = function() {
     var tot = 0;
     this.every(function(x) {
         if(x >0){
@@ -27,7 +27,7 @@ SumUntilNegF.prototype = function() {
 }
 
 Array.prototype.ex_1 = function() {
-    return SumUntilNegF.prototype;   
+    return this.sumUntilNegF;   
 }
 
 /*
@@ -41,14 +41,14 @@ function avgF(myArray) {
     return avg;
 }
 
-avgF.prototype = function(){
-    var sum = this.reduce{function(acc, x){return acc + x}, 0};
+Array.prototype.avgF = function(){
+    var sum = this.reduce(function(acc, x){return acc + x}, 0);
     var avg = sum / this.length;
     return avg;
 }
 
 Array.prototype.ex_3 = function(){
-    return avgF.prototype;
+    return this.avgF;
 }
 
 /*
@@ -60,7 +60,7 @@ Input: A = {2, 5, 1, 8}
 Output: A = {5, 1, 2, 8} 
 */
 
-List.prototype = function(myArray){
+Array.prototype.list = function(myArray){
     var odd = this.filter(function(x) {
         return x % 2 != 0;
     });
@@ -71,5 +71,5 @@ List.prototype = function(myArray){
 }
 
 Array.prototype.ex_11 = function() {
-    return  List.prototype;
+    return  this.list;
 }
