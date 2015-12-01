@@ -45,44 +45,94 @@ Stack.prototype.push = function(e) { this.myarray.push(e); }
 Stack.prototype.pop = function() { return this.myarray.pop(); }
 Stack.prototype.peek = function() { return this.myarray[this.myarray.length - 1]; }
 Stack.prototype.isEmpty = function() { return this.myarray.length == 0; }
-Stack.prototype.reduce = function() { return this.myarray.reduce(function(acc, x){return acc + x;},0)}
 
 function ex_3(myA) {
     var oddStack = new Stack();
     var evenStack = new Stack();
-    var resultStack = new Stack();
-
-    var evenMyA = myA.filter(function(x){
-        return x % 2 == 0;
-        });          
-    for(var i = 0; i < evenMyA.length; i++){
-        evenStack.push(evenMyA[i]);
-    }
-
-    var oddMyA = myA.filter(function(x){
-        return x % 2 != 0;
-        });    
-    for (var j = 0; j < oddMyA.length; j++){
-        oddStack.push(oddMyA[j]);
-    }
-       
+    
+    myA.filter(x => x % 2 == 0).forEach(x => evenStack.push(x))
+    myA.filter(x => x % 2 != 0).forEach(x => oddStack.push(x))       
+    var resultStack = new Stack();   
+    
     while (!evenStack.isEmpty() && !oddStack.isEmpty()) {
         resultStack.push(evenStack.pop() * oddStack.pop());
     }
     
-    return resultStack.reduce();
+    var sum = 0;
+    while(!resultStack.isEmpty()) {
+        sum += resultStack.pop();
+    }
+    return sum;
 }
 
 /*implementare linked list */
 
 function LinkedList() {
 
-    var Node = function(item){
+    var Node = function(item, succ, prec){
 
         this.item = item;
-        this.succ = null;
+        this.succ = succ;
+        this.prec = prec;
     };
+
+    this.first = null;
+    this.last = null;
 }
+
+LinkedList.prototype.getNode = function(index) {
+    function nodeR(node, i) {
+        if (index == i || node == null)
+            return node;
+        else
+            return nodeR(node.succ, i + 1);
+    }
+
+    return nodeR(this.first, 0);
+}
+
+LinkedList.prototype.get = function(index) {
+    var node = this.getNode(index);
+    if(node == null) {
+        return null
+    } else {
+        return node.item
+    }
+}
+
+LinkedList.prototype.add = function(index, e) {
+    var node = this.getNode(index);
+
+    if (this.first == null) {
+        var newNode = new Node(e, null, null);
+        this.first = newNode;
+        this.last = newNode;
+        return;
+    }
+
+    if (node == null) {
+        var newNode = new Node(e, this.last, null);
+        this.last.succ = newNode;
+        this.last = newNode;
+    } else {
+
+        if (index == 0) {
+            var newNode = new Node(e, null, node);
+            node.prec = newNode;
+            this.first = newNode;
+
+        }    
+
+        if (index != 0) {
+            var newNode = new Node(e, node.prec, node);
+            node.prec.succ = newNode;
+            node.prec = newNode;
+        }
+    }
+
+}
+
+
 
 /* search tree */
 
@@ -119,6 +169,7 @@ BST.prototype.add = function(e) {
         this.addNode(this.root, e);
     }
 
-
 }
+
+
    
